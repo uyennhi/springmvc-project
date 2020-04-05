@@ -1,12 +1,19 @@
 package com.program.entity;
 
+import java.util.Set;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.program.entity.Product;
 
 @Entity
 @Table (name="brand")
@@ -25,6 +32,10 @@ public class Brand {
 	
 	@Column (name = "description")
 	private String description;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "brandEntity", fetch = FetchType.LAZY)
+	private Set<Product> productSet;
 
 	public Brand() {
 		

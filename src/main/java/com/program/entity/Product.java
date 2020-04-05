@@ -55,116 +55,69 @@ public class Product {
 	public Product() {
 	}
 
-	/**
-	 * @return the productId
-	 */
 	public int getProductId() {
 		return productId;
 	}
 
-	/**
-	 * @param productId the productId to set
-	 */
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
 
-	/**
-	 * @return the productName
-	 */
 	public String getProductName() {
 		return productName;
 	}
 
-	/**
-	 * @param productName the productName to set
-	 */
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 
-	/**
-	 * @return the quantity
-	 */
 	public int getQuantity() {
 		return quantity;
 	}
 
-	/**
-	 * @param quantity the quantity to set
-	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	/**
-	 * @return the price
-	 */
 	public Double getPrice() {
 		return price;
 	}
 
-	/**
-	 * @param price the price to set
-	 */
 	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	/**
-	 * @return the saleDate
-	 */
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public Date getSaleDate() {
 		return saleDate;
 	}
 
-	/**
-	 * @param saleDate the saleDate to set
-	 */
+
 	@JsonSerialize(using = JsonDateSerializer.class)
 	public void setSaleDate(Date saleDate) {
 		this.saleDate = saleDate;
 	}
 
-	/**
-	 * @return the image
-	 */
 	public String getImage() {
 		return image;
 	}
 
-	/**
-	 * @param image the image to set
-	 */
 	public void setImage(String image) {
 		this.image = image;
 	}
 
-	/**
-	 * @return the description
-	 */
 	public String getDescription() {
 		return description;
 	}
 
-	/**
-	 * @param description the description to set
-	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	/**
-	 * @return the brand
-	 */
 	public Brand getBrandEntity() {
 		return brandEntity;
 	}
 
-	/**
-	 * @param brand the brand to set
-	 */
 	public void setBrandEntity(Brand brandEntity) {
 		this.brandEntity = brandEntity;
 	}
