@@ -9,11 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.program.entity.Brand;
 
 @Repository("brandRepository")
-public interface BrandRepository extends JpaRepository<Brand, Integer> {
-	
+public interface BrandRepository extends JpaRepository<Brand, Integer>{
+
 	Brand findByBrandName(String brandName);
 	
 	@Query("SELECT b.brandName FROM Brand b")
 	List<String> getAllBrandName();
-
 }
