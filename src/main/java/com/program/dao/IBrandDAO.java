@@ -8,5 +8,7 @@ import com.program.entity.Brand;
 public interface IBrandDAO extends GenericDAO<Brand, Integer>{
 
 	List<String> getAllBrandName();
+	
+	List<Brand> getBrands();
 
 }

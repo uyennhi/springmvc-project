@@ -24,5 +24,10 @@ public class BrandController {
 	public List<String> getAllBrandName() {
 		return brandService.getAllBrandName();
 	}
+	
+	@GetMapping(value = "/general/get-all-brand")
+	public List<Brand> getBrands() {
+		return brandService.getBrands();
+	}
 
 }

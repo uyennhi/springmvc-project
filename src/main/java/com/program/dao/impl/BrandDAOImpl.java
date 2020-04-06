@@ -24,43 +24,28 @@ public class BrandDAOImpl implements IBrandDAO {
 	private BrandRepository brandRepository;
 
 	
-
-	/**
-	 * Insert Brand
-	 * 
-	 * @param BrandEntity
-	 */
+	@Override
+	
+	public List<Brand> getBrands() {
+		return brandRepository.findAll();
+	}
 	@Override
 	public void insertOrUpdate(Brand entity) {
 		brandRepository.save(entity);
 	}
 
-	/**
-	 * Delete Brand
-	 * 
-	 * @param BrandEntity
-	 */
+
 	@Override
 	public void delete(Brand entity) {
 		brandRepository.delete(entity);
 	}
 
-	/**
-	 * Get All Brand name
-	 * 
-	 * @return List<String> BrandName
-	 */
+
 	@Override
 	public List<String> getAllBrandName() {
 		return brandRepository.getAllBrandName();
 	}
 
-	/**
-	 * Find brand by brand name
-	 * 
-	 * @param brandName
-	 * @return Brand
-	 */
 	@Override
 	public Brand findByName(String brandName) {
 		return brandRepository.findByBrandName(brandName);

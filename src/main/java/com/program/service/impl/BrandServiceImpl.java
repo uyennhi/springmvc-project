@@ -64,16 +64,26 @@ public class BrandServiceImpl implements IBrandService {
 	public List<String> getAllBrandName() {
 		return brandDao.getAllBrandName();
 	}
-
-	/**
-	 * Find brand by brand name
-	 * 
-	 * @param brandName
-	 * @return Brand
-	 */
+	
+	
+	
 	@Override
 	public Brand findBrandByName(String brandName) {
 		return brandDao.findByName(brandName);
 	}
+
+	@Override
+	public List<Brand> getBrands() {
+		// TODO Auto-generated method stub
+		return brandDao.getBrands();
+	}
+
+	@Override
+	public List<Brand> getListBrand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

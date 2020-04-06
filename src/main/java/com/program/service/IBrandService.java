@@ -6,6 +6,8 @@ import com.program.entity.Brand;
 import com.program.utility.ResponseModel;
 
 public interface IBrandService {
+	
+	List<Brand> getListBrand();
 
 	ResponseModel insertBrand(Brand brand);
 
@@ -16,4 +18,6 @@ public interface IBrandService {
 	Brand findBrandByName(String brandName);
 
 	List<String> getAllBrandName();
+	
+	List<Brand> getBrands();
 }
