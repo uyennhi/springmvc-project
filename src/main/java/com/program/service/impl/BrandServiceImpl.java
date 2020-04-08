@@ -3,10 +3,12 @@ package com.program.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.program.service.IBrandService;
+import com.program.utility.PageModel;
 import com.program.dao.IBrandDAO;
 import com.program.entity.Brand;
 import com.program.utility.Constrains;
@@ -84,6 +86,9 @@ public class BrandServiceImpl implements IBrandService {
 		return null;
 	}
 
-
+	@Override
+	public PageModel<Brand> getBrandsByPageable(String brandName, Pageable pageable, int currentPage) {
+		return brandDao.getBrandsByPageable(brandName, pageable, currentPage);
+	}
 
 }
