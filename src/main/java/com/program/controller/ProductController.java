@@ -1,7 +1,11 @@
 package com.program.controller;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.program.entity.Product;
 import com.program.service.IProductService;
@@ -83,5 +89,24 @@ public class ProductController {
 	@PostMapping(value = "/admin/delete-product")
 	public ResponseModel deleteProduct(@RequestBody Product product) {
 		return productService.deleteProduct(product);
+	}
+	
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public ResponseEntity uploadFile(@RequestParam("file") MultipartFile file,
+			@RequestParam(name = "logoName") String logoName) {
+		String originalFileName = file.getOriginalFilename();
+		File destinationFile = new File("D:\\opt\\pilot\\images/"+ logoName);
+		
+		try {
+			file.transferTo(destinationFile);
+			System.out.println("File name:" + originalFileName);
+			System.out.println("File path:" + destinationFile.getPath());
+			System.out.println("File size:" + file.getSize());
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return new ResponseEntity(destinationFile.getPath(), HttpStatus.CREATED);
 	}
 }

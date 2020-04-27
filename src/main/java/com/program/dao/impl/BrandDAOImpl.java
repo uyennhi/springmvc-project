@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -61,7 +62,8 @@ public class BrandDAOImpl implements IBrandDAO {
 		CriteriaQuery<Brand> cq = cb.createQuery(Brand.class);
 		Root<Brand> brand = cq.from(Brand.class);
 		cq.select(brand);
-
+		Order sortId = cb.desc(brand.get("brandId"));
+		cq.orderBy(sortId);
 		// Condition if searching by brand name
 		if (brandName != "") {
 			Predicate name = cb.like(brand.get("brandName"), "%" + brandName + "%");
@@ -69,7 +71,7 @@ public class BrandDAOImpl implements IBrandDAO {
 		}
 
 		TypedQuery<Brand> query = em.createQuery(cq);
-
+		
 		// Set pageable
 		int totalPage = (query.getResultList().size() - 1) / pageable.getPageSize() + 1;
 		query.setFirstResult(pageable.getPageNumber() * pageable.getPageSize());

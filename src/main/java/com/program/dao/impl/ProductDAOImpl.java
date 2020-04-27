@@ -62,7 +62,8 @@ public class ProductDAOImpl implements IProductDAO {
 		Root<Brand> brand = cq.from(Brand.class);
 		Join<Brand, Product> product = brand.join("productSet");
 		cq.select(product);
-
+		Order sortId = cb.desc(product.get("productId"));
+		cq.orderBy(sortId);
 		// Set condition
 		setConditionSearchProducts(searchModel, cb, cq, brand, product);
 
